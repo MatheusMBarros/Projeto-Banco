@@ -4,6 +4,7 @@
  */
 package udesc.projetobanco;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,16 +15,25 @@ public class Banco {
 
     private String nome;
     private int codigo;
-
     private static int geradorCodigo = 0;
     private int codigoConta;
-    List<ContaCorrente> contas;
+    List<ContaCorrente> contaC;
+    List<ContaPoupanca> contaP;
 
     public Banco(String nome) {
         this.nome = nome;
         this.codigo = ++geradorCodigo;
         this.codigoConta = 0;
-              
+        this.contaC = new ArrayList<ContaCorrente>();
+        this.contaP = new ArrayList<ContaPoupanca>();
+
+    }
+
+    public void addContaCorrente(ContaCorrente conta) {
+        contaC.add(conta);
+    }
+     public void addContaPoupanca(ContaPoupanca conta) {
+        contaP.add(conta);
     }
 
     public String getNome() {
@@ -34,14 +44,15 @@ public class Banco {
         return codigo;
     }
 
-    public ContaCorrente criarContaCorrente(String nomeCorrentista){
-        ContaCorrente contaCorrente = new ContaCorrente(this,nomeCorrentista);
-                
-        
+    public ContaCorrente criarContaCorrente(String nomeCorrentista) {
+        ContaCorrente contaCorrente = new ContaCorrente(this, nomeCorrentista);
+        this.codigoConta += codigoConta;
         return null;
     }
 
-    public ContaPoupanca criarContaPoupanca() {
+    public ContaPoupanca criarContaPoupanca(String nomeCorrentista) {
+        this.codigoConta += codigoConta;
+        ContaPoupanca contaPoupanca = new ContaPoupanca(this, nomeCorrentista);
         return null;
     }
 

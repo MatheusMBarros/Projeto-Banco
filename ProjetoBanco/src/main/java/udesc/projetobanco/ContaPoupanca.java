@@ -14,8 +14,6 @@ public class ContaPoupanca extends ContaCorrente{
         super(banco, nomeCorrentista);
     }
     
-    
-    
     @Override
     public void saque (float valor){
         if(valor - saldo < 0.0){
@@ -24,5 +22,7 @@ public class ContaPoupanca extends ContaCorrente{
             super.saque(valor);
         }
     }
+    
+    
     
 }
